@@ -15,6 +15,7 @@ import StaffReports from './pages/staff/Reports'
 import StaffProfile from './pages/staff/Profile'
 import AdminDashboard from './pages/admin/Dashboard'
 import StaffVerification from './pages/admin/StaffVerification'
+import UserManagement from './pages/admin/UserManagement'
 
 function homeFor(user) {
   if (!user) return '/signin'
@@ -62,6 +63,7 @@ export default function App() {
         {/* Admin routes */}
         <Route path="/admin"        element={<PrivateRoute role="admin"><AdminDashboard /></PrivateRoute>} />
         <Route path="/admin/staff"  element={<PrivateRoute role="admin"><StaffVerification /></PrivateRoute>} />
+        <Route path="/admin/users"  element={<PrivateRoute role="admin"><UserManagement /></PrivateRoute>} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

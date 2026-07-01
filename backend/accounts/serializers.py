@@ -72,6 +72,22 @@ class AdminStaffSerializer(serializers.ModelSerializer):
         return obj.get_full_name()
 
 
+class AdminUserSerializer(serializers.ModelSerializer):
+    """Used by admin to list and delete any user."""
+    full_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CustomUser
+        fields = [
+            'id', 'full_name', 'email', 'role',
+            'student_id', 'staff_id', 'department', 'school',
+            'programme', 'is_verified', 'date_joined',
+        ]
+
+    def get_full_name(self, obj):
+        return obj.get_full_name()
+
+
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True, min_length=8)

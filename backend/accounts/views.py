@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate
 from .models import CustomUser
 from .serializers import (
     StudentRegisterSerializer, StaffRegisterSerializer,
-    UserProfileSerializer, ChangePasswordSerializer, AdminStaffSerializer
+    UserProfileSerializer, ChangePasswordSerializer, AdminStaffSerializer,
+    AdminUserSerializer,
 )
 
 
@@ -155,6 +156,35 @@ class AdminVerifyStaffView(APIView):
             user.delete()
             return Response({'message': f'{name} rejected and removed.'})
         return Response({'error': 'Action must be "approve" or "reject".'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AdminUserListView(APIView):
+    """List all non-admin users. Admin only."""
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        if not _is_admin(request.user):
+            return Response({'error': 'Admin access required.'}, status=status.HTTP_403_FORBIDDEN)
+        users = CustomUser.objects.exclude(role='admin').order_by('role', 'first_name')
+        return Response(AdminUserSerializer(users, many=True).data)
+
+
+class AdminDeleteUserView(APIView):
+    """Delete any non-admin user. Admin only."""
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):
+        if not _is_admin(request.user):
+            return Response({'error': 'Admin access required.'}, status=status.HTTP_403_FORBIDDEN)
+        try:
+            user = CustomUser.objects.get(pk=pk)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+        if user.role == 'admin':
+            return Response({'error': 'Cannot delete admin accounts.'}, status=status.HTTP_403_FORBIDDEN)
+        name = user.get_full_name()
+        user.delete()
+        return Response({'message': f'{name} has been removed.'})
 
 
 class AdminDashboardStatsView(APIView):

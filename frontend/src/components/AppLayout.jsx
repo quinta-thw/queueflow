@@ -59,9 +59,10 @@ const adminNav = [
     ]
   },
   {
-    section: 'STAFF MANAGEMENT',
+    section: 'MANAGEMENT',
     items: [
       { to: '/admin/staff', icon: ListChecks, label: 'Staff Verification' },
+      { to: '/admin/users', icon: Users,      label: 'User Management'    },
     ]
   },
 ]
@@ -201,6 +202,7 @@ function TopBar({ onMenuClick, role }) {
     if (p.includes('profile')) return 'Profile'
     if (p.includes('queues')) return 'Queue Control'
     if (p.includes('reports')) return 'Reports & Analytics'
+    if (p.includes('users')) return 'User Management'
     if (p.includes('staff')) return 'Staff Verification'
     return 'QueueFlow'
   }

@@ -4,6 +4,7 @@ from .views import (
     LoginView, StudentRegisterView, StaffRegisterView, LogoutView,
     ProfileView, ChangePasswordView,
     AdminStaffListView, AdminVerifyStaffView, AdminDashboardStatsView,
+    AdminUserListView, AdminDeleteUserView,
 )
 
 urlpatterns = [
@@ -19,4 +20,6 @@ urlpatterns = [
     path('admin/stats/', AdminDashboardStatsView.as_view(), name='admin-stats'),
     path('admin/staff/', AdminStaffListView.as_view(), name='admin-staff-list'),
     path('admin/staff/<int:pk>/verify/', AdminVerifyStaffView.as_view(), name='admin-verify-staff'),
+    path('admin/users/', AdminUserListView.as_view(), name='admin-user-list'),
+    path('admin/users/<int:pk>/', AdminDeleteUserView.as_view(), name='admin-delete-user'),
 ]
