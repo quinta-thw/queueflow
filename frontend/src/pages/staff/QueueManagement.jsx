@@ -24,7 +24,6 @@ const SERVICE_INFO = {
   'ICT Support':     'Password resets, email setup, portal access & technical help.',
   'Library':         'Book borrowing, printing, research assistance & inter-library loans.',
   'Admissions':      'New student intake, transfers, re-admissions & documentation.',
-  'Cafeteria':       'Meal plan management, catering bookings & dietary requests.',
   'Course Advisor':  'Unit registration, course selection, academic planning & appeals.',
 }
 

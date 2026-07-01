@@ -10,7 +10,6 @@ class Service(models.Model):
         ('ict', 'ICT Support'),
         ('student_affairs', 'Student Affairs'),
         ('admissions', 'Admissions'),
-        ('cafeteria', 'Cafeteria'),
         ('course_advisor', 'Course Advisor'),
     ]
 

@@ -15,7 +15,6 @@ const DEPARTMENTS = [
   'ICT Support',
   'Library',
   'Admissions',
-  'Cafeteria',
   'Course Advisor',
 ]
 

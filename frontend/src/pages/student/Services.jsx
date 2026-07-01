@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Search, BookOpen, DollarSign, Heart, Users, Wifi, BookMarked,
-  Coffee, ClipboardList, Lock, PauseCircle,
+  ClipboardList, Lock, PauseCircle,
 } from 'lucide-react'
 import AppLayout from '../../components/AppLayout'
 import JoinModal from '../../components/JoinModal'
@@ -16,7 +16,6 @@ const iconMap = {
   student_affairs: { Icon: Users,         color: 'bg-purple-50 text-purple-500'},
   ict:             { Icon: Wifi,          color: 'bg-cyan-50 text-cyan-500'    },
   library:         { Icon: BookMarked,    color: 'bg-amber-50 text-amber-500'  },
-  cafeteria:       { Icon: Coffee,        color: 'bg-orange-50 text-orange-500'},
   admissions:      { Icon: ClipboardList, color: 'bg-indigo-50 text-indigo-500'},
   course_advisor:  { Icon: ClipboardList, color: 'bg-teal-50 text-teal-500'   },
 }
