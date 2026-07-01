@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import {
-  GraduationCap, LayoutDashboard, List, Ticket, Bell, User,
+  GraduationCap, LayoutDashboard, List, Ticket, Bell, User, Users,
   ListChecks, BarChart2, Send, LogOut, ChevronRight, Menu, X,
   Home, Settings, BookOpen
 } from 'lucide-react'
